@@ -17,17 +17,23 @@ window.addEventListener('load', () => {
     displayitems()
     newItem.addEventListener('submit', e => {
         e.preventDefault()
-        const item = {
-            content: e.target.elements.content.value,
-            done: false,
-            createdAr: new Date().getTime()
-        }
+        if(e.target.elements.content.value.trim() == ""){
+            alert('please enter an item')
+        }else {
+            const item = {
+                content: e.target.elements.content.value,
+                done: false,
+                createdAr: new Date().getTime()
+            }
+       
+       
         items.push(item)
         localStorage.setItem('items', JSON.stringify(items))
         e.target.reset()
        
         displayitems()
         modalClose()
+        }
     })
 })
 
